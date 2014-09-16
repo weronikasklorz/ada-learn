@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html ng-app="recruitment-app" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Recruitment application - Adam Fryzka</title>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+
+<body ng-controller="recruitment-app-controller as con">
+    <section class="panel-tabs" ng-init="tab=0">
+        <ul class="nav nav-pills">
+            <li ng-class="{ active:tab === 0 }"><a href ng-click="tab = 0; con.reset(); ">Welcome!</a></li>
+            <li ng-class="{ active:tab === 1 }"><a href ng-click="tab = 1; con.reset(); ">Exercise 1</a></li>
+            <li ng-class="{ active:tab === 2 }"><a href ng-click="tab = 2; con.reset(); ">Exercise 2</a></li>
+            <li ng-class="{ active:tab === 3 }"><a href ng-click="tab = 3; con.reset(); ">Exercise 3A</a></li>
+            <li ng-class="{ active:tab === 4 }"><a href ng-click="tab = 4; con.reset(); ">Exercise 3B</a></li>
+            <li ng-class="{ active:tab === 5 }"><a href ng-click="tab = 5; con.reset(); ">Exercise 4</a></li>
+
+        </ul>
+
+    </section>
+    <div class="panel" ng-show="tab === 0">
+        <h1><strong>Welcome</strong>, on my first Angular application <span class="circleNumber">;-)</span></h1>
+        
+        <h4>Adam Fryzka</h4>
+
+    </div>
+
+    <div class="panel" ng-show="tab === 1">
+        <div class="panel-top">
+            <h1>Exercise <span class="circleNumber">{{con.exercises[0].exerciseNumber}}</span><span ng-show="con.exercises[1].part"> {{con.exercises[0].part}}</span></h1>
+            <h3>{{con.exercises[0].task}}</h3>
+        </div>
+    </div>
+    <div class="panel" ng-show="tab === 2">
+        <div class="panel-top">
+            <h1>Exercise <span class="circleNumber">{{con.exercises[1].exerciseNumber}}</span><span ng-show="con.exercises[1].part"> {{con.exercises[1].part}}</span></h1>
+            <h3>{{con.exercises[1].task}}</h3>
+        </div>
+    </div>
+    <div class="panel" ng-show="tab === 3">
+        <div class="panel-top">
+            <h1>Exercise <span class="circleNumber">{{con.exercises[2].exerciseNumber}}</span><span ng-show="con.exercises[2].part"> {{con.exercises[2].part}}</span></h1>
+            <h3>{{con.exercises[2].task}}</h3>
+        </div>
+
+        <div class="panel-middle-top">
+            <p ng-repeat="k in con.exercises[2].examples">{{k.correctAnswer}}</p>
+        </div>
+
+        <div class="panel-middle-bottom">
+            <div class="box">
+                <img src="pictures/exercise1/1.jpg" />
+                <input ng-style="con.myStyle1" type="text" ng-model="con.answers1" />
+            </div>
+            <div class="box">
+                <img src="pictures/exercise1/2.jpg" />
+                <input ng-style="con.myStyle2" type="text" ng-model="con.answers2" />
+            </div>
+            <div class="box">
+                <img src="pictures/exercise1/3.jpg" />
+                <input ng-style="con.myStyle3" type="text" ng-model="con.answers3" />
+            </div>
+            <div class="box">
+                <img src="pictures/exercise1/4.jpg" />
+                <input ng-style="con.myStyle4" type="text" ng-model="con.answers4" />
+            </div>
+            <div class="box">
+                <img src="pictures/exercise1/5.jpg" />
+                <input ng-style="con.myStyle5" type="text" ng-model="con.answers5" />
+            </div>
+            <div class="box">
+                <img src="pictures/exercise1/6.jpg" />
+                <input ng-style="con.myStyle6" type="text" ng-model="con.answers6" />
+            </div>
+        </div>
+        <div class="panel-bottom">
+            <center>
+                <button ng-hide="con.clicked" ng-click="con.check(con.exercises[2].id-1,con.answers1, con.answers2,con.answers3,con.answers4,con.answers5,con.answers6)">Check!</button>
+
+
+                <button ng-show="con.clicked" ng-click="con.reset()">Try again?</button>
+                <br />
+                <p class="result" ng-show="con.points>-1">Your result in current exercise: {{con.points}} / 6. {{con.pointsComments[con.points]}}</p>
+            </center>
+        </div>
+    </div>
+
+    <div class="panel" ng-show="tab === 4">
+        <div class="panel-top">
+            <h1>Exercise <span class="circleNumber">{{con.exercises[3].exerciseNumber}}</span><span ng-show="con.exercises[3].part"> {{con.exercises[3].part}}</span></h1>
+            <h3>{{con.exercises[3].task}}</h3>
+        </div>
+
+        <div class="panel-middle-top">
+
+        </div>
+
+        <div class="panel-middle-bottom">
+            <div class="left">
+                <img src="pictures/exercise2/all.png" />
+            </div>
+            <div class="left">
+                <div class="box2">
+                    {{con.exercises[3].examples[0].text}}
+                    <input ng-style="con.myStyle1" type="text" ng-model="con.answers1" />
+                </div>
+                <div class="box2">
+                    {{con.exercises[3].examples[1].text}}
+                    <input ng-style="con.myStyle2" type="text" ng-model="con.answers2" />
+                </div>
+                <div class="box2">
+                    {{con.exercises[3].examples[2].text}}
+                    <input ng-style="con.myStyle3" type="text" ng-model="con.answers3" />
+                </div>
+                <div class="box2">
+                    {{con.exercises[3].examples[3].text}}
+                    <input ng-style="con.myStyle4" type="text" ng-model="con.answers4" />
+                </div>
+                <div class="box2">
+                    {{con.exercises[3].examples[4].text}}
+                    <input ng-style="con.myStyle5" type="text" ng-model="con.answers5" />
+                </div>
+                <div class="box2">
+                    {{con.exercises[3].examples[5].text}}
+                    <input ng-style="con.myStyle6" type="text" ng-model="con.answers6" />
+                </div>
+            </div>
+
+        </div>
+        <div class="panel-bottom">
+            <center>
+                <button ng-hide="con.clicked" ng-click="con.check(con.exercises[3].id-1,con.answers1, con.answers2,con.answers3,con.answers4,con.answers5,con.answers6)">Check!</button>
+
+
+                <button ng-show="con.clicked" ng-click="con.reset()">Try again?</button>
+                <br />
+                <p class="result" ng-show="con.points>-1">Your result in current exercise: {{con.points}} / 6. {{con.pointsComments[con.points]}}</p>
+            </center>
+        </div>
+    </div>
+    <div class="panel" ng-show="tab === 5">
+        <div class="panel-top">
+            <h1>Exercise <span class="circleNumber">{{con.exercises[4].exerciseNumber}}</span><span ng-show="con.exercises[4].part"> {{con.exercises[4].part}}</span></h1>
+            <h3>{{con.exercises[4].task}}</h3>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
